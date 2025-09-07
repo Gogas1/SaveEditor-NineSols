@@ -1,7 +1,8 @@
 {
     "name": "General flags",
     "flags": [
-        "test1",
-        "test2"
+        "0e4f033d412ab4c07b57e8b425322134ScriptableDataFloat",
+        "0b9cad677208a48d8a2b14cd0dd2b6e8ScriptableDataFloat",
+        "0c1ddf20ca0b26447895b50183aebae9PlayerAbilityData"
     ]
 }
