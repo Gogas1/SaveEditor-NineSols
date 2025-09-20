@@ -3,6 +3,7 @@
     "flags": [
         "0e4f033d412ab4c07b57e8b425322134ScriptableDataFloat",
         "0b9cad677208a48d8a2b14cd0dd2b6e8ScriptableDataFloat",
-        "0c1ddf20ca0b26447895b50183aebae9PlayerAbilityData"
+        "0c1ddf20ca0b26447895b50183aebae9PlayerAbilityData",
+        "d9db1497af2374752961d6962c9394a5ScriptableDataFloat"
     ]
 }
