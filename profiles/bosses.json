@@ -21,5 +21,46 @@
             "name": "",
             "desc": ""
         }
+    ],
+    "switches": [
+        {
+            "name": "Your money?",
+            "desc": "How many do you want?",
+            "options": [
+                {
+                    "name": "0",
+                    "setters": [
+                        {
+                            "key": "0b9cad677208a48d8a2b14cd0dd2b6e8ScriptableDataFloat",
+                            "flagEntriesValues": {
+                                "field": 0
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "100",
+                    "setters": [
+                        {
+                            "key": "0b9cad677208a48d8a2b14cd0dd2b6e8ScriptableDataFloat",
+                            "flagEntriesValues": {
+                                "field": 100
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "1000",
+                    "setters": [
+                        {
+                            "key": "0b9cad677208a48d8a2b14cd0dd2b6e8ScriptableDataFloat",
+                            "flagEntriesValues": {
+                                "field": 1000
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
     ]
 }
