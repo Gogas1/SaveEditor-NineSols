@@ -57,7 +57,7 @@ export class EditorTab {
     this.handleDataChange();
   }
 
-  private createFlagsModel(flags: Record<string, Record<string, any>>, switches: Record<string, SwitchEntry>) {
+  private createFlagsModel(flags: Record<string, Record<string, any>>) {
     const flagsEntry: Record<string, FlagEntry[]> = {};
     const switchesEntry: Record<string, SwitchEntry> = {};
     const result: FlagsModel = { flags: flagsEntry, switches: switchesEntry };
@@ -68,10 +68,6 @@ export class EditorTab {
         type: this.detectType(value),
         value
       }))
-    });
-
-    Object.keys(switches).forEach(switchName => {
-      switchesEntry[switchName] = { selected: '' }
     });
 
     return result;
@@ -194,12 +190,7 @@ export class EditorTab {
       profile.flags
         .map((f) => [f.key, snapshot.flagDict[f.key]]));
 
-    const switches = Object.fromEntries(
-      profile.switches
-        .map((s) => [s.name, {} as SwitchEntry])
-    )
-
-    this.flagsModel.set(this.createFlagsModel(flags, switches));
+    this.flagsModel.set(this.createFlagsModel(flags));
 
     runInInjectionContext(this.injector, () => {
       this.flagsForm = form(this.flagsModel);
