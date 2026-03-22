@@ -1,0 +1,9 @@
+<div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="file">File:</label>
+            <input id="file" type="file" (change)="onFileSelected($event)"/>
+        </div>
+        <button type="submit" [disabled]="form.invalid">Submit</button>
+    </form>
+</div>

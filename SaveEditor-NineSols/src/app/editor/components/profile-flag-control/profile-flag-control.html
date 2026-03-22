@@ -1,0 +1,37 @@
+<section>
+    <div>
+        @if(profileFlagConfig().name) {
+        <h4>{{profileFlagConfig().name}}</h4>
+        <span>{{profileFlagConfig().key}}</span>
+        }
+        @else {
+        <h4>{{profileFlagConfig().key}}</h4>
+        }
+
+        @if(profileFlagConfig().desc) {
+        <p>{{profileFlagConfig().desc}}</p>
+        }
+
+    </div>
+    <div>
+        @for (flagField of flagsField(); let i = $index; track flagField().value().key) {
+        <div class="flag-entry">
+            <label [attr.for]="'flag-value-' + profileFlagConfig().key + '-' + flagField().value().key">
+                {{flagField().value().key}}
+            </label>
+
+            @switch (flagField().value().type) {
+            @case('text') {
+            <input [id]="'flag-value-' + profileFlagConfig().key + '-' + flagField().value().key" [field]="flagField.value" type="text" />
+            }
+            @case('number') {
+            <input [id]="'flag-value-' + profileFlagConfig().key + '-' + flagField().value().key" [field]="flagField.value" type="number" />
+            }
+            @case('checkbox') {
+            <input [id]="'flag-value-' + profileFlagConfig().key + '-' + flagField().value().key" [field]="flagField.value" type="checkbox" />
+            }
+            }
+        </div>
+        }
+    </div>
+</section>

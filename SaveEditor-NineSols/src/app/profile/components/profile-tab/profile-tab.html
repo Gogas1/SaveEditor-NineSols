@@ -1,0 +1,52 @@
+@if(activeProfile()) {
+@let profile = activeProfile();
+
+@if(profile?.alias == profile?.data?.name) {
+<p>Active profile: {{ profile?.data?.name }}</p>
+}
+@else {
+<p>Active profile: {{ profile?.alias }}({{profile?.data?.name ?? 'not named'}})</p>
+}
+}
+@else {
+<p>No active profile</p>
+}
+
+@if((allProfiles() || []).length > 0) {
+    <div>
+        <p>
+            <select [field]="activeProfileForm.profileAlias" (change)="onProfileSelection($event.target)">
+                <option value="{{NOT_SELECTED_ID}}">Not selected</option>
+                @for (profile of allProfiles(); track profile.alias) {
+                    <option [value]="profile.alias">{{ profile.alias }}</option>
+                }
+            </select>
+        </p>
+        <p>
+            @for (profile of allProfiles(); track profile.alias) {
+                <div>
+                    <p>
+                        {{profile.alias}} |
+                        {{profile.source}} |
+                        {{profile.src}}
+                    </p>
+                </div>                
+            }
+        </p>
+    </div>
+    <hr>
+}
+
+<div>
+    <div>
+        <div>
+            <label>Src:</label>
+            <input [field]="newRemoteProfileForm.src" />
+        </div>
+        <div>
+            <label>Alias</label>
+            <input [field]="newRemoteProfileForm.alias" />
+        </div>
+        <button (click)="onAddNewRemoteProfile()">Add</button>
+    </div>
+</div>

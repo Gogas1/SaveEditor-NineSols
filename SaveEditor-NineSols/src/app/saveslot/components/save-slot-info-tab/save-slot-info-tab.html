@@ -1,0 +1,27 @@
+<div>
+    @if(saveSlotService.saveSlotDataSnapshot) {
+        <p>Version: {{saveSlotService.saveSlotDataSnapshot.version}}</p>
+        <ul>
+            @for (flag of flags() | keyvalue; track $index) {
+                <li>
+                    <div>{{flag.key}}:</div>
+                    <ul>
+                        @for(flagField of flag.value | keyvalue; track $index) {
+                            <li>
+                               {{flagField.key}}: {{flagField.value}} 
+                            </li>
+                        }
+                        
+                    </ul>
+                    
+                </li>
+            }
+        </ul>
+        <p>
+            <button (click)="saveSaveFile()">Save file</button>
+        </p>
+    }
+    @else {
+        <p>Load save file first</p>
+    }
+</div>

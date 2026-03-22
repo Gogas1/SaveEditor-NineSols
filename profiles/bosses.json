@@ -21,49 +21,5 @@
             "name": "",
             "desc": ""
         }
-    ],
-    "switches": [
-        {
-            "name": "Your money?",
-            "desc": "How many do you want?",
-            "options": [
-                {
-                    "name": "Nothing",
-                    "value": "0",
-                    "setters": [
-                        {
-                            "key": "0b9cad677208a48d8a2b14cd0dd2b6e8ScriptableDataFloat",
-                            "flagEntriesValues": {
-                                "field": 0
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "A little(100)",
-                    "value": "100",
-                    "setters": [
-                        {
-                            "key": "0b9cad677208a48d8a2b14cd0dd2b6e8ScriptableDataFloat",
-                            "flagEntriesValues": {
-                                "field": 100
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "More, but still a little(1000)",
-                    "value": "1000",
-                    "setters": [
-                        {
-                            "key": "0b9cad677208a48d8a2b14cd0dd2b6e8ScriptableDataFloat",
-                            "flagEntriesValues": {
-                                "field": 1000
-                            }
-                        }
-                    ]
-                }
-            ]
-        }
     ]
 }

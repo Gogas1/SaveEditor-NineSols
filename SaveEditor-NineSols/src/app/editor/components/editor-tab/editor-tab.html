@@ -1,0 +1,101 @@
+<div>
+    @if(!isLoaded()) {
+    <p>Load save file and choose a profile to access editor</p>
+    }
+    @else {
+    @let activeProfile$ = activeProfile();
+    @if(activeProfile$?.data?.flags ?? false) {
+    <div>
+        <h1>Flags:</h1>
+        <ul>
+            @for (profileFlagEntry of activeProfile$!.data!.flags; track profileFlagEntry.key) {
+            <li>                
+                <div>
+                    <div>
+                        <h4>
+                            @if(profileFlagEntry.name) {
+                                <span>profileFlagEntry.name</span>
+                            }
+                            @else {
+                                <span>profileFlagEntry.key</span>
+                            }
+                            @if(isFlagUpdated(profileFlagEntry.key)) {
+                            <span>
+                                <label>
+                                    Not saved
+                                </label>
+                                <button (click)="saveFlag(profileFlagEntry.key)">
+                                    Save
+                                </button>
+                            </span>
+                            }
+                        </h4>
+                        <span>{{profileFlagEntry.key}}</span>
+                        
+                        
+
+                        @if(profileFlagEntry.desc) {
+                        <p>{{profileFlagEntry.desc}}</p>
+                        }
+                    </div>
+                    <div>
+                        @for (flagField of flagsModel().flags[profileFlagEntry.key]; let i = $index; track
+                        flagField.key) {
+                        <div class="flag-entry">
+                            <label [attr.for]="'flag-value-' + profileFlagEntry.key + '-' + flagField.key">
+                                {{flagField.key}}
+                            </label>
+
+                            @switch (flagField.type) {
+                            @case('text') {
+                            <input [id]="'flag-value-' + profileFlagEntry.key + '-' + flagField.key"
+                                [field]="flagsForm.flags[profileFlagEntry.key][i].value" type="text"
+                                (change)="handleFlagDataChange(profileFlagEntry.key)" />
+                            }
+                            @case('number') {
+                            <input [id]="'flag-value-' + profileFlagEntry.key + '-' + flagField.key"
+                                [field]="flagsForm.flags[profileFlagEntry.key][i].value" type="number"
+                                (change)="handleFlagDataChange(profileFlagEntry.key)" />
+                            }
+                            @case('checkbox') {
+                            <input [id]="'flag-value-' + profileFlagEntry.key + '-' + flagField.key"
+                                [field]="flagsForm.flags[profileFlagEntry.key][i].value" type="checkbox"
+                                (change)="handleFlagDataChange(profileFlagEntry.key)" />
+                            }
+                            }
+                        </div>
+                        }
+                    </div>
+                </div>
+            </li>
+            }
+        </ul>
+        <hr />
+    </div>
+    }
+    <!-- @if(activeProfile$?.data?.switches ?? false) {
+    <div>
+        <h1>Switches:</h1>
+        <ul>
+            @for (profileSwitchEntry of activeProfile()!.data!.switches; track profileSwitchEntry.name) {
+            <li>
+                @if(isSwitchUpdated(profileSwitchEntry.name)) {
+                <div>
+                    <label>
+                        Not saved
+                    </label>
+                    <button (click)="saveSwitch(profileSwitchEntry.name)">
+                        Save
+                    </button>
+                </div>
+                }
+                <app-profile-switch-control [flagEntry]="profileSwitchEntry"
+                    [field]="flagsForm.switches[profileSwitchEntry.name].selected"
+                    (stateSwitched)="handleSwitchChange(profileSwitchEntry)"></app-profile-switch-control>
+            </li>
+            }
+        </ul>
+    </div>
+    } -->
+    }
+</div>

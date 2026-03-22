@@ -1,0 +1,12 @@
+.main {
+    display: flex;
+    flex-direction: row;
+
+    .side-bar {
+        flex: 0.15;
+    }
+
+    .content {
+        flex: 1;
+    }
+}

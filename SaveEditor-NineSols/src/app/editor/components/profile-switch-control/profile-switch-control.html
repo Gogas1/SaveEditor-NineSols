@@ -1,0 +1,14 @@
+<div>
+    <h2>{{ flagEntry().name }}</h2>
+    @if(flagEntry().desc) {
+        <p>
+            {{ flagEntry().desc }}
+        </p>
+    }
+    <select [value]="value()" (change)="onSwitchChange($event.target)">
+        <option value="not-selected">Not selected</option>
+        @for (switchEntry of flagEntry().options; track $index) {
+            <option [value]="switchEntry.value">{{ switchEntry.name }}</option>
+        }
+    </select>
+</div>
